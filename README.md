@@ -1,14 +1,10 @@
-# Preparation: Load packages and the dataset used for this assignment.
+Preparation: Load packages and the dataset used for this assignment.
 webAnalytics= read.csv("WebAnalytics4.csv")
 library(ggplot2)
 
 
 
-#Q1:
-# Use base R to draw the scatterplot of TimeOnPage (x axis) versus PageViews (y axis).
-# Make sure to change the shape, color, and size of the points. 
-# Also, set your own labels for both axes and add a title to the plot. 
-# In addition, set a limit on the x axis to be between 0 and 300,000.
+#Q1:Use base R to draw the scatterplot of TimeOnPage (x axis) versus PageViews (y axis).Make sure to change the shape, color, and size of the points. Also, set your own labels for both axes and add a title to the plot.In addition, set a limit on the x axis to be between 0 and 300,000.
 
 plot(PageViews~TimeOnPage,webAnalytics, type="p",
      pch=18,col="purple",cex=1,
@@ -18,11 +14,7 @@ plot(PageViews~TimeOnPage,webAnalytics, type="p",
      main="How Much Time Page Visitors Spend on Web Page")
 
 
-#Q2:
-# Recreate the same plot using ggplot. 
-# (You can refer to ggplot cheatsheet or its reference page online for an overview of all the arguments.)
-# (For example, here are some examples of geom_point() options: 
-# https://ggplot2.tidyverse.org/reference/geom_point.html
+#Q2:Recreate the same plot using ggplot. (You can refer to ggplot cheatsheet or its reference page online for an overview of all the arguments.)(For example, here are some examples of geom_point() options: https://ggplot2.tidyverse.org/reference/geom_point.html
 
 options(scipen=999)
 ggplot(webAnalytics,aes(TimeOnPage,PageViews, xmin=0, xmax=300000)) +
@@ -32,10 +24,7 @@ ggplot(webAnalytics,aes(TimeOnPage,PageViews, xmin=0, xmax=300000)) +
        title="How Much Time Page Visitors Spend on Web Page")
   
 
-#Q3:
-# a. Use ggplot to draw the scatterplot of TotalDownloads (x axis) versus ConversionRate (y axis).
-# b. Draw a similar plot but add jitters. Use a theme and a color.
-# (For both parts, read TotalDownloads as a factor for visual clarity on the x axis.)
+#Q3:a. Use ggplot to draw the scatterplot of TotalDownloads (x axis) versus ConversionRate (y axis).b. Draw a similar plot but add jitters. Use a theme and a color.(For both parts, read TotalDownloads as a factor for visual clarity on the x axis.)
 
 #A
 ggplot(webAnalytics,aes(factor(TotalDownloads),ConversionRate)) +
@@ -52,11 +41,7 @@ ggplot(webAnalytics,aes(factor(TotalDownloads),ConversionRate)) +
   theme_bw()
 
 
-#Q4:
-# Create a boxplot with Region as categories (x-axis) and ConversionRate as the outcome of interest (y-axis).
-# Change the (border/points) color of the boxplots.
-# In addition, add a title, a subtitle, and a blank x axis label. 
-# In so doing, adjust the location, size, and the color of the title and the subtitle.
+#Q4:Create a boxplot with Region as categories (x-axis) and ConversionRate as the outcome of interest (y-axis).Change the (border/points) color of the boxplots.In addition, add a title, a subtitle, and a blank x axis label. In so doing, adjust the location, size, and the color of the title and the subtitle.
 
 ggplot(webAnalytics,aes(Region,ConversionRate)) +
   geom_boxplot(col="grey30",alpha=.2) + 
@@ -72,10 +57,7 @@ ggplot(webAnalytics,aes(Region,ConversionRate)) +
   theme(legend.position = "none")
 
 
-#Q5:
-# Create the same box plot of Q4 but use facet wrap to separate by Source.
-# Also, fill each boxplot with different colors based on Source and 
-# add a color legend to the bottom of the plot
+#Q5:Create the same box plot of Q4 but use facet wrap to separate by Source.Also, fill each boxplot with different colors based on Source and add a color legend to the bottom of the plot
 
 ggplot(webAnalytics,aes(Region,ConversionRate, fill=Source)) +
   geom_boxplot(col="grey30",alpha=.2) + 
